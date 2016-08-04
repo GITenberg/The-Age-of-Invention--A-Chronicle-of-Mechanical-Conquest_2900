@@ -1,0 +1,30 @@
+_repo: The-Age-of-Invention--A-Chronicle-of-Mechanical-Conquest_2900
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Thompson, Holland
+    birthdate: 1873
+    deathdate: 1940
+    gutenberg_agent_id: '1068'
+    url: http://www.gutenberg.org/2009/agents/1068
+    wikipedia: http://en.wikipedia.org/wiki/Holland_Thompson
+description: Chronicles of America series; v. 37
+gutenberg_bookshelf:
+- United States
+- Children's History
+gutenberg_issued: '2001-11-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '2900'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcc 'T'
+- !lcsh 'Inventions -- History'
+- !lcsh 'Inventors -- United States'
+- !lcc 'E151'
+- GITenberg
+title: 'The Age of Invention: A Chronicle of Mechanical Conquest'
+url: http://www.gutenberg.org/ebooks/2900
