@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: TI1GXHvEzEONxJrjI0s5C9Km3n/fxF3GCqbdoBzsH5BgvUqfKSyyqZ31hFoz9zFZaBTxvEzKA7az1fQByuZjGPZEUqldaIWZAJYN+mq0LbFANgVX8+zL5qlydDD8mcYrj8II4d0F5+2yqpjzVSQaxBvks43npe1wTw9xma3CHopweMLPGBnBJjNY9CkFvVCHcWR8O9ES0DHD9miGinnD7hzmyWT3ga/REd/etZt/q7KYWRAMQ+m9lZFygR4aM2BOaO3ukUMi55jqZbxjdVe5SBnEzTAlZVJyZJ8eLSHCoovzeorYuOLGBdj8miYq6MLHBZsdxcvewaIcFEtzfcAm/7sUtzBFXg2NEJP3FoujY1iN9iRN0MvHNI7UUup0x35gG3oRsdDlil3QXkEk1fyNrQ7IILG+pfT7iSPGf6NyhfZy232xaeCWXIxpLtcB3vzc06gWOxD36S/MgzU53blK1YPDpAgXVTYpzi7uBiCuEQL5sNEzkvzrsYzWXnM2uS1BewDxzZOcXWpUmo4Y1T2YKOch+iMAnaII6ZuK/Pt9fDsja9YVHIkkKFOYl0hO1Tt1ID1kLW7TDCuZZ+nW7MTVF/PlZb46mvZC0ngIrH4W9hjz9Vsye6JbCTNoMrukCTVQUFqMTWbk4ZMT09s+hXgdh/mXBKvNBlN2re0kjHjiZhc=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Age-of-Invention--A-Chronicle-of-Mechanical-Conquest_2900
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
