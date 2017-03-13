@@ -1,5 +1,8 @@
 _repo: The-Age-of-Invention--A-Chronicle-of-Mechanical-Conquest_2900
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Thompson, Holland
@@ -9,6 +12,8 @@ creator:
     url: http://www.gutenberg.org/2009/agents/1068
     wikipedia: http://en.wikipedia.org/wiki/Holland_Thompson
 description: Chronicles of America series; v. 37
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/2900#The-Age-of-Invention--A-Chronicle-of-Mechanical-Conquest
 gutenberg_bookshelf:
 - United States
 - Children's History
